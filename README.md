@@ -28,6 +28,11 @@ that change what you build and drops the rest. Where Google says something is
 optional or not worth your time, the file says that too, so your agent doesn't
 turn a "nice to have" into a rule.
 
+It also covers AI search: Google's AI Overviews and AI Mode, and the crawler
+tokens for Google and OpenAI, taken from their own documentation. An agent
+asked to "block AI bots" can otherwise take a site out of ChatGPT search
+without anyone noticing.
+
 ## What's inside
 
 Every rule is tagged so an agent can tell a requirement from a preference:
@@ -51,13 +56,14 @@ Every rule is tagged so an agent can tell a requirement from a preference:
 | 7 | Links | Anchor text, internal and external links, `sponsored` / `ugc` / `nofollow` |
 | 8 | Images | `<img>` vs CSS backgrounds, alt text, formats, preview images |
 | 9 | Video | Watch pages, thumbnails, metadata |
-| 10 | Structured data | JSON-LD, visible-content rule, required properties, breadcrumbs |
+| 10 | Structured data | JSON-LD, visible-content rule, required properties, breadcrumbs, organization |
 | 11 | Spam policies | The full list of things that get pages demoted or removed |
 | 12 | Page experience | Core Web Vitals, HTTPS, mobile, interstitials |
 | 13 | International | `hreflang`, language detection, geotargeting |
 | 14 | Promotion | Getting found without manufacturing links |
-| 15 | Don't bother | Meta keywords, word counts, heading order, the "duplicate content penalty" myth |
-| 16 | Monitoring | Search Console, the tools, how to measure a change |
+| 15 | Don't bother | Meta keywords, word counts, heading order, the "duplicate content penalty" myth, `llms.txt` |
+| 16 | Monitoring | Search Console, the tools, how to measure a change, AI traffic |
+| 17 | AI search | AI Overviews and AI Mode, `Google-Extended`, `OAI-SearchBot` vs `GPTBot` |
 
 It ends with a **pre-ship checklist** an agent can run before any page or
 template change, and two rules written for agents in particular: never
@@ -98,8 +104,9 @@ It's for pages you want people to find.
 
 ## Keeping it current
 
-Google updates its documentation. This version was read on **2026-09-22**. The
-SEO Starter Guide itself was last updated 2025-12-10. Every page it draws on is
+Google updates its documentation. This version was read on **2026-09-22**; the
+AI search additions on **2026-10-05**. The SEO Starter Guide itself was last
+updated 2025-12-10. Every page it draws on is
 listed at the bottom of `SEO.md`. If the file is more than a year old, re-read
 the starter guide before relying on it.
 
@@ -107,8 +114,10 @@ the starter guide before relying on it.
 
 The source material is Google Search Central's
 [documentation](https://developers.google.com/search/docs), licensed under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). This is an
-independent summary. It isn't affiliated with or endorsed by Google, and when
-the two disagree, Google's documentation wins.
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), plus OpenAI's
+[crawler documentation](https://developers.openai.com/api/docs/bots) for the
+ChatGPT search rules. This is an independent summary. It isn't affiliated
+with or endorsed by Google or OpenAI, and when they disagree with it, their
+documentation wins.
 
 Made by [@senblet](https://github.com/senblet).

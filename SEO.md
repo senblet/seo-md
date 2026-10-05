@@ -6,9 +6,11 @@ Reference it from `AGENTS.md` / `CLAUDE.md`; project-specific facts belong there
 not here.
 
 Everything below is drawn from Google Search Central documentation (read in full
-on 2026-09-22; the SEO Starter Guide itself was last updated 2025-12-10). Where
-Google says something is optional or not worth worrying about, this file says so
-too — do not upgrade a "nice to have" into a rule.
+on 2026-09-22; the SEO Starter Guide itself was last updated 2025-12-10). §17
+adds Google's AI-features and crawler pages and OpenAI's crawler documentation
+(read 2026-10-05). Where Google says something is optional or not worth
+worrying about, this file says so too — do not upgrade a "nice to have" into a
+rule.
 
 **How to read it.** **MUST** = required for eligibility or a spam-policy line;
 breaking it can keep pages out of Search. **SHOULD** = best practice with real
@@ -77,6 +79,8 @@ Also:
 - DON'T block resources Google needs to understand the page.
 - Combining crawling and indexing rules can cancel them out — a `noindex` on a
   robots.txt-blocked page is never read.
+- AI crawlers have their own tokens, and blocking the wrong one removes the
+  site from AI search. See §17 before adding any AI-related robots.txt rule.
 
 ### Sitemaps
 - **Optional for small sites.** Likely not needed if the site is ~500 pages or
@@ -366,6 +370,12 @@ text-result image, rich attributes. Most are automatic; favicon, site name
   `name`, `item` (the last may omit `item`). Represent a typical user path rather
   than mirroring the URL structure; the domain and the page itself may be
   omitted.
+- **Organization**: on the home page or one About page, not every page. Use
+  the most specific subtype (`OnlineStore`, a `LocalBusiness` type). No
+  required properties; add those that apply — `name`, `alternateName`, `url`,
+  `logo`, `address`, `telephone`, `sameAs` for official profiles. It helps
+  Google tell the organization apart from others and pick the logo shown in
+  results and the knowledge panel.
 
 ## 11. Spam policies — never do these
 
@@ -460,6 +470,9 @@ Violations can demote a page or remove a whole site. **MUST NOT:**
 - **Artificial freshness** — changing dates or churning content doesn't help,
   and changing dates without substantial changes is a warning sign of
   search-engine-first content.
+- **AI text files and AI markup** (`llms.txt` and the like) — Google says no
+  new machine-readable files, AI text files or special schema.org markup are
+  needed to appear in AI Overviews or AI Mode.
 
 ## 16. Monitoring
 
@@ -472,12 +485,45 @@ Violations can demote a page or remove a whole site. **MUST NOT:**
 - **Tools:** Rich Results Test, PageSpeed Insights, URL Inspection.
 - **Measure changes:** compare before/after on stable pages over months;
   wait weeks before concluding anything.
+- **AI traffic:** AI Overviews and AI Mode are counted in the Performance
+  report under the "Web" search type, not reported separately. ChatGPT search
+  adds `utm_source=chatgpt.com` to the links it sends, so analytics can
+  separate that traffic.
+
+## 17. AI search features and AI crawlers
+
+- **Google's AI Overviews and AI Mode have no extra requirements.** A page is
+  eligible as a supporting link if it is indexed and can be shown in Search
+  with a snippet. Everything above applies; no special optimization is needed.
+- **Google controls:** AI features are part of Search, so robots.txt rules for
+  Googlebot are the control. To limit what is shown, use `nosnippet`,
+  `data-nosnippet`, `max-snippet` or `noindex` (§6, §2).
+- **`Google-Extended`** is a robots.txt token only, with no user agent of its
+  own. It controls whether crawled content trains Gemini models and grounds
+  Gemini Apps and Vertex AI. It does **not** affect inclusion or ranking in
+  Google Search.
+- **OpenAI uses independent tokens:**
+  - `OAI-SearchBot` surfaces pages in ChatGPT search. A site that blocks it
+    is not shown in ChatGPT search answers (it can still appear as a bare
+    link). Changes take about 24 hours to apply.
+  - `GPTBot` crawls for model training. Blocking it opts out of training and
+    does not affect ChatGPT search.
+  - `ChatGPT-User` fetches pages when a user asks; robots.txt may not apply,
+    and it is not used to decide what appears in search.
+  - A blocked page can still show as a link and title. To keep it out, use
+    `noindex` and allow crawling, as with Google.
+- **DON'T** add a blanket "block AI bots" robots.txt group. Blocking search
+  crawlers (`Googlebot`, `OAI-SearchBot`) costs visibility. Blocking training
+  crawlers (`GPTBot`, `Google-Extended`) is a business decision for the site
+  owner, not an SEO fix — ask before adding it.
 
 ---
 
 ## Agent checklist — before shipping any page or template change
 
 - [ ] Returns `200`; not blocked by robots.txt; no stray `noindex`.
+- [ ] robots.txt doesn't block `OAI-SearchBot` or other search crawlers unless
+      the owner chose to; any training opt-out was asked for.
 - [ ] Main content, links and metadata present in the **server-rendered or
       prerendered HTML**, not only after JavaScript.
 - [ ] Unique, descriptive `<title>`; unique meta description; one clear `<h1>`.
@@ -516,8 +562,15 @@ Google Search Central, `https://developers.google.com/search/docs/`:
 `appearance/structured-data/intro-structured-data` ·
 `appearance/structured-data/sd-policies` ·
 `appearance/structured-data/breadcrumb` ·
+`appearance/structured-data/organization` · `appearance/ai-features` ·
 `specialty/international/managing-multi-regional-sites` ·
 `monitor-debug/search-console-start`.
+
+Google crawlers:
+`https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers`.
+
+OpenAI: `https://developers.openai.com/api/docs/bots` ·
+`https://help.openai.com/en/articles/12627856-publishers-and-developers-faq`.
 
 Google updates these pages; re-read the starter guide when this file is more
 than a year old.
