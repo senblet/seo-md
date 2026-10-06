@@ -8,7 +8,8 @@ not here.
 Everything below is drawn from Google Search Central documentation (read in full
 on 2026-09-22; the SEO Starter Guide itself was last updated 2025-12-10). §17
 adds Google's AI-features and crawler pages and OpenAI's crawler documentation
-(read 2026-10-05). Where Google says something is optional or not worth
+(read 2026-10-05); keyword research in §5 adds Google's Trends and Search
+Console pages (read 2026-10-06). Where Google says something is optional or not worth
 worrying about, this file says so too — do not upgrade a "nice to have" into a
 rule.
 
@@ -244,12 +245,32 @@ substantial changes**; adding or deleting content in bulk to seem "fresh"
   `TrainedAlgorithmicMedia`; AI product titles/descriptions must be labelled as
   AI-generated (Merchant Center policy).
 
-### Keywords
+### Keywords and keyword research
 - Think about the words readers actually search — beginners and experts use
   different terms ("cheese board" vs "charcuterie") — and use them naturally in
   prominent places: title, main heading, alt text, link text.
 - Don't chase every variation; Google's language matching understands synonyms
   and related concepts.
+- **Research with real data**, in this order:
+  1. **Search Console** Performance report, Queries tab: the terms the site
+     already appears and gets clicks for. Search Console is the source of
+     truth for Search performance.
+  2. **Google Trends** Explore (up to 5 terms at once): which terms have high
+     or rising interest, where they are popular, and the related topics and
+     queries (Top and Rising). A rising term that is still little known may be
+     less competitive.
+  3. **Filter** to terms that fit the business and where the site has
+     first-hand experience. Don't write about something only because it is
+     trending (warning signs above).
+  4. **Check each market separately.** Interest and seasonality differ by
+     country; publish seasonal content a little before searches peak.
+- **Agent rule:** never invent search volumes, difficulty scores, rankings or
+  trends. Use data the user can see (Search Console, Trends, or an export
+  they provide) and label anything else as an estimate. Trends is a sample of
+  searches showing interest over time, not exact volume.
+- **One page per topic, not per keyword variant.** Substantially similar pages
+  aimed at similar queries (one per city, one per synonym) are doorway abuse
+  (§11). Cover close variations on one page.
 
 ### Ads and interstitials
 - Ads must not become distracting or stop users from reading.
@@ -564,7 +585,8 @@ Google Search Central, `https://developers.google.com/search/docs/`:
 `appearance/structured-data/breadcrumb` ·
 `appearance/structured-data/organization` · `appearance/ai-features` ·
 `specialty/international/managing-multi-regional-sites` ·
-`monitor-debug/search-console-start`.
+`monitor-debug/search-console-start` · `monitor-debug/trends-start` ·
+`monitor-debug/google-analytics-search-console`.
 
 Google crawlers:
 `https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers`.

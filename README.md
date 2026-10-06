@@ -51,7 +51,7 @@ Every rule is tagged so an agent can tell a requirement from a preference:
 | 2 | Crawling and indexing | robots.txt vs `noindex`, sitemaps, canonicals, redirects, status codes |
 | 3 | JavaScript and SPAs | `<a href>` links, History-API routing, soft 404s, canonicals in JS, rendering pitfalls |
 | 4 | URLs and structure | Readable URLs, hyphens, case sensitivity, parameters, infinite URL spaces |
-| 5 | Content | Helpful content, E-E-A-T, YMYL, Who/How/Why, AI-generated content, honest dates |
+| 5 | Content | Helpful content, E-E-A-T, YMYL, Who/How/Why, AI-generated content, honest dates, keyword research |
 | 6 | Search appearance | `<title>`, meta descriptions, snippet controls, "Read more" deep links |
 | 7 | Links | Anchor text, internal and external links, `sponsored` / `ugc` / `nofollow` |
 | 8 | Images | `<img>` vs CSS backgrounds, alt text, formats, preview images |
@@ -104,10 +104,10 @@ It's for pages you want people to find.
 
 ## Keeping it current
 
-Google updates its documentation. This version was read on **2026-09-22**; the
-AI search additions on **2026-10-05**. The SEO Starter Guide itself was last
-updated 2025-12-10. Every page it draws on is
-listed at the bottom of `SEO.md`. If the file is more than a year old, re-read
+Google updates its documentation. This version was read on **2026-09-22**, the
+AI search additions on **2026-10-05** and keyword research on **2026-10-06**.
+The SEO Starter Guide itself was last updated 2025-12-10. Every page it draws
+on is listed at the bottom of `SEO.md`. If the file is more than a year old, re-read
 the starter guide before relying on it.
 
 ## Credits
