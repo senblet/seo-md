@@ -7,9 +7,10 @@ not here.
 
 Everything below is drawn from Google Search Central documentation (read in full
 on 2026-09-22; the SEO Starter Guide itself was last updated 2025-12-10). §17
-adds Google's AI-features and crawler pages and OpenAI's crawler documentation
-(read 2026-10-05); keyword research in §5 adds Google's Trends and Search
-Console pages (read 2026-10-06). Where Google says something is optional or not worth
+adds Google's AI-features and crawler pages, OpenAI's crawler documentation
+(read 2026-10-05) and Anthropic's (read 2026-11-15); keyword research in §5 adds Google's Trends and Search
+Console pages (read 2026-10-06); §12 takes its Core Web Vitals thresholds from
+web.dev (read 2026-10-14). Where Google says something is optional or not worth
 worrying about, this file says so too — do not upgrade a "nice to have" into a
 rule.
 
@@ -441,7 +442,9 @@ Violations can demote a page or remove a whole site. **MUST NOT:**
 
 - **Core Web Vitals are used by ranking**; aim for good scores, but chasing a
   perfect score purely for SEO is rarely worth it. There is no single "page
-  experience signal".
+  experience signal". "Good" means, at the 75th percentile of page loads,
+  split by mobile and desktop: **LCP ≤ 2.5 s** (main content shown), **INP ≤
+  200 ms** (response to a tap or click), **CLS ≤ 0.1** (layout doesn't jump).
 - Serve over **HTTPS**; migrate from HTTP.
 - **Mobile-friendly** — Google crawls with a mobile crawler by default.
 - No excessive or distracting ads; no intrusive interstitials; make the main
@@ -479,7 +482,9 @@ Violations can demote a page or remove a whole site. **MUST NOT:**
 - **Meta keywords** — Google doesn't use them.
 - **Keywords in the domain or URL path** — hardly any ranking effect beyond
   breadcrumbs. Name the site for the business.
-- **TLD choice** — only matters for country targeting, and weakly.
+- **TLD choice for ranking** — no effect, with one real exception: a
+  country-code TLD (`.cl`, `.fr`) signals the site is for that country only
+  and cannot target another (§13).
 - **Content length** — no minimum or maximum word count.
 - **Subdomains vs subdirectories** — do what suits the business.
 - **PageRank obsession** — links are one signal among many.
@@ -533,10 +538,19 @@ Violations can demote a page or remove a whole site. **MUST NOT:**
     and it is not used to decide what appears in search.
   - A blocked page can still show as a link and title. To keep it out, use
     `noindex` and allow crawling, as with Google.
+- **Anthropic uses three independent tokens**, all honoured in robots.txt
+  (it also supports `Crawl-delay`):
+  - `Claude-SearchBot` indexes pages for Claude's search results. Blocking it
+    can reduce visibility in those results.
+  - `Claude-User` fetches pages when a user asks Claude. Blocking it can
+    reduce visibility for user-directed search.
+  - `ClaudeBot` collects content for model training. Blocking it excludes
+    future content from training and does not affect the other two.
+  - Blocking by IP address is not a reliable opt-out; use robots.txt.
 - **DON'T** add a blanket "block AI bots" robots.txt group. Blocking search
-  crawlers (`Googlebot`, `OAI-SearchBot`) costs visibility. Blocking training
-  crawlers (`GPTBot`, `Google-Extended`) is a business decision for the site
-  owner, not an SEO fix — ask before adding it.
+  crawlers (`Googlebot`, `OAI-SearchBot`, `Claude-SearchBot`) costs
+  visibility. Blocking training crawlers (`GPTBot`, `ClaudeBot`,
+  `Google-Extended`) is a business decision for the site owner, not an SEO fix — ask before adding it.
 
 ---
 
@@ -590,6 +604,10 @@ Google Search Central, `https://developers.google.com/search/docs/`:
 
 Google crawlers:
 `https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers`.
+
+web.dev, Core Web Vitals thresholds (read 2026-10-14): `https://web.dev/articles/vitals`.
+
+Anthropic: `https://support.claude.com/en/articles/8896518` (read 2026-11-15).
 
 OpenAI: `https://developers.openai.com/api/docs/bots` ·
 `https://help.openai.com/en/articles/12627856-publishers-and-developers-faq`.

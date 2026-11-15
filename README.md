@@ -63,7 +63,7 @@ Every rule is tagged so an agent can tell a requirement from a preference:
 | 14 | Promotion | Getting found without manufacturing links |
 | 15 | Don't bother | Meta keywords, word counts, heading order, the "duplicate content penalty" myth, `llms.txt` |
 | 16 | Monitoring | Search Console, the tools, how to measure a change, AI traffic |
-| 17 | AI search | AI Overviews and AI Mode, `Google-Extended`, `OAI-SearchBot` vs `GPTBot` |
+| 17 | AI search | AI Overviews and AI Mode, `Google-Extended`, `OAI-SearchBot` vs `GPTBot`, Anthropic's three crawlers |
 
 It ends with a **pre-ship checklist** an agent can run before any page or
 template change, and two rules written for agents in particular: never
@@ -105,7 +105,8 @@ It's for pages you want people to find.
 ## Keeping it current
 
 Google updates its documentation. This version was read on **2026-09-22**, the
-AI search additions on **2026-10-05** and keyword research on **2026-10-06**.
+AI search additions on **2026-10-05** and keyword research on **2026-10-06**, Core Web Vitals thresholds on
+**2026-10-14** and Anthropic's crawlers on **2026-11-15**.
 The SEO Starter Guide itself was last updated 2025-12-10. Every page it draws
 on is listed at the bottom of `SEO.md`. If the file is more than a year old, re-read
 the starter guide before relying on it.
